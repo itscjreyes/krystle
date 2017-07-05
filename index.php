@@ -34,7 +34,6 @@
 
 <div class="blogListing">
   <div class="container">
-
     <div class="listing">
     	<?php 
     		if( have_posts() ) {
