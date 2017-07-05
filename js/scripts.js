@@ -1,5 +1,23 @@
+var app = {};
+
+app.init = function(){
+	app.stickyMenu();
+};
+
+app.stickyMenu = function(){
+	var bannerHeight = $('header').height();
+
+	$(window).scroll(function(){
+		if ($(window).scrollTop() > bannerHeight) {
+			$('header').addClass('sticky');
+		}
+
+		else {
+			$('header').removeClass('sticky');
+		}
+	});
+};
+
 $(function(){
-
-	console.log("It's working");
-
+	app.init();
 });

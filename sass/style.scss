@@ -1,18 +1,23 @@
 /*!
-* Theme Name: HackerYou Starter Theme
-* Theme URI: http://hackeryou.com;
-* Description: Starter theme for building any website. Created by HackerYou. * Rename this to your own theme page.
+* Theme Name: Krystle Theme
+* Theme URI: http://cjreyes.ca
+* Description: Custom theme for Krystle Reyes
 * Version: 1.0
-* Author: HackerYou
-* Author URI: http://hackeryou.com
+* Author: CJ Reyes
+* Author URI: http://cjreyes.ca
 */
 
+$fontTitle: 'Montserrat', sans-serif;
+$fontMain: 'Open Sans', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500|Open+Sans');
 @import 'normalize';
 @import 'typography';
 @import 'navigation';
 @import 'sidebar';
 @import 'comments';
 @import 'footer';
+
 /*
 ====================================
 Default Styling
@@ -21,15 +26,18 @@ Default Styling
 
 img {
 	max-width: 100%;
+	height: auto;
 }
 
 body {
 	color: #333;
+	font-family: $fontMain;
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 1300px;
 	margin: 0 auto;
+	padding: 4% 8%;
 }
 
 .content {
@@ -42,13 +50,182 @@ body {
 	width: 100%;
 }
 
-a {
-	color: red;
+.banner {
+	padding-top: 65px;
 }
 
+/*
+====================================
+Blog Listing
+====================================
+*/
 
+.blogBanner {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: white;
 
+	&:after {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.3);
+	}
 
+	.container {
+		position: relative;
+		z-index: 1;
+		padding: 10% 8%;
+	}
 
+	span {
+		color: #333;
+		background: white;
+		padding: 5px 10px;
+		font-family: $fontTitle;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 12px;
+		letter-spacing: 4px;
+	}
 
+	h2 {
+		font-size: 40px;
+		font-weight: 400;
+		margin: 20px 0 0;
+	}
 
+	a {
+		display: inline-block;
+		margin-top: 40px;
+		border: 1px solid white;
+		color: white;
+		text-transform: uppercase;
+		font-family: $fontTitle;
+		font-size: 12px;
+		letter-spacing: 2px;
+		padding: 10px 15px;
+		z-index: 1;
+		transition: all 0.3s ease;
+
+		&:hover,
+		&:focus {
+			background: white;
+			color: #333;
+		}
+	}
+}
+
+.blogListing {
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.listing {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 70%;
+}
+
+.blogPost {
+	color: #333;
+	width: 48%;
+	margin-bottom: 50px;
+
+	&:hover,
+	&:focus {
+		color: #333;
+
+		.postImg {
+			transform: scale(1.2);
+		}
+
+		.postImgWrapper {
+			&:after {
+				opacity: 1;
+			}
+
+			span {
+				opacity: 1;
+			}
+		}
+	}
+
+	h4 {
+		font-weight: 400;
+		margin: 0;
+		font-family: $fontMain;
+	}
+}
+
+.postImgWrapper {
+	position: relative;
+	display: flex;
+	height: 200px;
+	overflow: hidden;
+
+	span {
+		position: relative;
+		margin: auto;
+		border: 1px solid white;
+		color: white;
+		text-transform: uppercase;
+		font-family: $fontTitle;
+		font-size: 12px;
+		letter-spacing: 2px;
+		padding: 10px 15px;
+		z-index: 1;
+		opacity: 0;
+		transition: all 0.3s ease;
+
+		&:hover {
+			background: white;
+			color: #333;
+		}
+	}
+
+	&:after {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.6);
+		transition: all 0.3s ease;
+		opacity: 0;
+	}
+}
+
+.postImg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	right: 0;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	transition: all 0.5s ease;
+}
+
+.postDate {
+	margin: 20px 0 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 14px;
+}
+
+.sidebar {
+	width: 28%;
+}

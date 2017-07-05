@@ -17,14 +17,16 @@
   <div class="container">
     <h1>
       <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
-        <?php bloginfo( 'name' ); ?>
+        Title
       </a>
     </h1>
 
-    <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'primary'
-    )); ?>
+    <nav>
+      <ul class="menu">
+        <li><a href="<?php echo home_url(); ?>">Home</a></li>
+        <li><a href="<?php echo home_url(); ?>/#about">About</a></li>
+        <li><a href="<?php echo home_url(); ?>/blog">Blog</a></li>
+      </ul>
+    </nav>
   </div> <!-- /.container -->
 </header><!--/.header-->
-
