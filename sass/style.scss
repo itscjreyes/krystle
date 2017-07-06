@@ -11,6 +11,7 @@ $fontTitle: 'Montserrat', sans-serif;
 $fontMain: 'Open Sans', sans-serif;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500|Open+Sans');
+@import url(//github.hubspot.com/odometer/themes/odometer-theme-default.css);
 @import 'normalize';
 @import 'typography';
 @import 'navigation';
@@ -248,6 +249,19 @@ button {
 .slick-dots li button:hover:after {
   opacity: 0.8;
   background: white;
+}
+
+/* Odometer */
+
+
+
+/* Instagram Feed */
+
+.instaImage {
+	display: block;
+	width: 100px;
+	height: 100px;
+	background-size: cover;
 }
 
 /*
