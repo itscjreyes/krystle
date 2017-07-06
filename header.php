@@ -17,15 +17,16 @@
   <div class="container">
     <h1>
       <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
-        Title
+        Krystle Reyes
       </a>
     </h1>
 
     <nav>
       <ul class="menu">
         <li><a href="<?php echo home_url(); ?>">Home</a></li>
-        <li><a href="<?php echo home_url(); ?>/#about">About</a></li>
+        <li><a href="<?php echo home_url(); ?>/#about" class="smooth">About</a></li>
         <li><a href="<?php echo home_url(); ?>/blog">Blog</a></li>
+        <li><a href="<?php echo home_url(); ?>/#contact" class="smooth">Contact</a></li>
       </ul>
     </nav>
   </div> <!-- /.container -->

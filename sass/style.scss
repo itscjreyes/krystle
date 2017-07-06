@@ -54,6 +54,202 @@ body {
 	padding-top: 65px;
 }
 
+/* Forms */
+
+input[type="submit"] {
+	background: transparent;
+	border: 1px solid #333;
+	color: #333;
+	text-transform: uppercase;
+	padding: 10px 15px;
+	font-weight: 600;
+	margin-top: 20px !important;
+	transition: all 0.3s ease;
+
+	&:hover,
+	&:focus {
+		background: #333;
+		color: white;
+	}
+}
+
+textarea {
+	resize: none;
+}
+
+/*
+====================================
+Home page
+====================================
+*/
+
+.home {
+	& > div:nth-child(even) {
+		background: #f9f9f9;
+	}
+}
+
+/* Banner */
+
+.homeBanner {
+  overflow: hidden;
+}
+
+.slick-slide {
+  background: lightgrey;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide1 {
+  background-image: url("https://unsplash.it/g/600/300/?blur");
+}
+
+.slide2 {
+  background-image: url("https://unsplash.it/g/600/350/?blur");
+}
+
+.slide3 {
+  background-image: url("https://unsplash.it/g/600/400/?blur");
+}
+
+.slick-slide .container {
+  position: relative;
+  padding: 4% 8%;
+  transition: all 1.2s ease;
+  transition-delay: 0.5s;
+  opacity: 0;
+  bottom: -50px;
+  max-width: 500px;
+  margin: auto;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-slide h2 {
+  padding: 0;
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 30px;
+}
+
+.slick-slide h3 {
+  padding: 0;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.slick-slide.slick-active .container {
+  bottom: 0;
+  opacity: 1;
+}
+
+button {
+  outline: none;
+}
+
+.slick-arrow {
+  position: absolute;
+  opacity: 0;
+  top: 200px;
+  color: white;
+  background: transparent;
+  border: none;
+  z-index: 2;
+}
+
+.slick-arrow .fa {
+  font-size: 40px;
+}
+
+.slick-arrow.arrow-next {
+  right: -15px;
+  transition: all 0.3s ease;
+}
+
+.slick-arrow.arrow-prev {
+  left: -15px;
+  transition: all 0.5s ease;
+}
+
+.homeBanner:hover .slick-arrow {
+  opacity: 0.3;
+}
+
+.homeBanner:hover .slick-arrow.arrow-next {
+  right: 10px;
+}
+
+.homeBanner:hover .slick-arrow.arrow-prev {
+  left: 10px;
+}
+
+.homeBanner .slick-arrow:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.slick-dots {
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  bottom: -50px;
+  opacity: 0;
+  transition: all 0.7s ease;
+}
+
+.homeBanner:hover .slick-dots {
+  bottom: 0;
+  opacity: 1;
+}
+
+.slick-dots li {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+}
+
+.slick-dots button {
+  position: relative;
+  border: none;
+  color: rgba(0,0,0,0);
+  background: transparent;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li button:after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border: 1px solid white;
+  opacity: 0.3;
+  border-radius: 50%;
+  left: 5px;
+  top: 3px;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li button:hover {
+  cursor: pointer;
+}
+
+.slick-dots li.slick-active button:after,
+.slick-dots li button:hover:after {
+  opacity: 0.8;
+  background: white;
+}
+
 /*
 ====================================
 Blog Listing
@@ -81,7 +277,7 @@ Blog Listing
 	.container {
 		position: relative;
 		z-index: 1;
-		padding: 10% 8%;
+		padding: 10% 8% 12%;
 	}
 
 	span {
@@ -228,4 +424,122 @@ Blog Listing
 
 .sidebar {
 	width: 28%;
+}
+
+.archiveBanner {
+	background-image: url("https://unsplash.it/g/1100/800/?blur");
+	background-size: cover;
+	background-position: center;
+
+	.container {
+		padding: 10% 8% 8%;
+	}
+
+	h1 {
+		text-align: center;
+		color: white;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 8px;
+	}
+}
+
+.singlePost,
+.blogComments {
+	.container {
+		padding: 6% 10%;
+		max-width: 900px;
+	}
+}
+
+a[rel~="category"] {
+	background: #333;
+	color: white;
+	font-family: $fontTitle;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 13px;
+	margin-right: 5px;
+	padding: 5px 10px;
+	opacity: 0.5;
+
+	&:hover,
+	&:focus {
+		opacity: 1;
+	}
+}
+
+.postNav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-previous,
+.nav-next {
+	text-transform: uppercase;
+	font-family: $fontTitle;
+	font-weight: 500;
+
+	a {
+		opacity: 0.7;
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}
+}
+
+.nav-previous {
+	.fa {
+		padding-right: 10px;
+	}
+}
+
+.relatedPosts {
+	.container {
+		padding: 0 8%;
+		text-align: center;
+	}
+
+	h2 {
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 16px;
+		margin: 0 auto 40px;
+
+		&:before,
+		&:after {
+			position: absolute;
+			content: "";
+			width: 100px;
+			height: 1px;
+			background: #333;
+			opacity: 0.5;
+			top: 8px;
+		}
+
+		&:before {
+			left: -120px;
+		}
+
+		&:after {
+			right: -120px;
+		}
+	}
+}
+
+.relatedListing {
+	display: flex;
+	justify-content: center;
+
+	.blogPost {
+		width: 30%;
+		margin: 0 1%;
+		text-align: center;
+	}
 }

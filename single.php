@@ -1,45 +1,93 @@
 <?php get_header(); ?>
 
-<div class="main">
-  <div class="container">
-    <div class="content">
-      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <h1 class="entry-title"><?php the_title(); ?></h1>
+	<?php if (has_post_thumbnail( $post->ID ) ): ?>
+		<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+		<div class="banner blogBanner" style="background-image: url('<?php echo $image[0]; ?>')">
+	<?php endif; ?>
+		<div class="container">
+			<span><?php the_date(); ?></span>
+			<h2><?php the_title(); ?></h2>
+		</div>
+	</div>
 
-          <div class="entry-meta">
-            <?php hackeryou_posted_on(); ?>
-          </div><!-- .entry-meta -->
+	<div class="singlePost">
+		<div class="container">
 
-          <div class="entry-content">
-            <?php the_content(); ?>
-            <?php wp_link_pages(array(
-              'before' => '<div class="page-link"> Pages: ',
-              'after' => '</div>'
-            )); ?>
-          </div><!-- .entry-content -->
+			<div class="postContent">
+				<?php the_category(' '); ?>
+				<?php the_content(); ?>
+				<?php wp_link_pages(array(
+					'before' => '<div class="page-link"> Pages: ',
+					'after' => '</div>'
+				)); ?>
+			</div><!-- .postContent -->
 
-          <div class="entry-utility">
-            <?php hackeryou_posted_in(); ?>
-            <?php edit_post_link( 'Edit', '<span class="edit-link">', '</span>' ); ?>
-          </div><!-- .entry-utility -->
-        </div><!-- #post-## -->
+			<div class="postNav">
+				<p class="nav-previous"><?php previous_post_link('%link', '<i class="fa fa-angle-left"></i> Prev'); ?></p>
+				<p class="nav-next"><?php next_post_link('%link', 'Next <i class="fa fa-angle-right"></i>'); ?></p>
+			</div><!-- #nav-below -->
 
-        <div id="nav-below" class="navigation">
-          <p class="nav-previous"><?php previous_post_link('%link', '&larr; %title'); ?></p>
-          <p class="nav-next"><?php next_post_link('%link', '%title &rarr;'); ?></p>
-        </div><!-- #nav-below -->
+		</div> <!-- /.container -->
+	</div> <!-- /.singlePost -->
 
-        <?php comments_template( '', true ); ?>
+	<div class="relatedPosts">
+		<div class="container">
+			<h2>Related</h2>
+			<div class="relatedListing">
+				<?php
+				// Default arguments
+				$args = array(
+					'posts_per_page' => 3, // How many items to display
+					'post__not_in'   => array( get_the_ID() ), // Exclude current post
+					'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
+				);
 
-      <?php endwhile; // end of the loop. ?>
+				// Check for current post category and add tax_query to the query arguments
+				$cats = wp_get_post_terms( get_the_ID(), 'category' ); 
+				$cats_ids = array();  
+				foreach( $cats as $wpex_related_cat ) {
+					$cats_ids[] = $wpex_related_cat->term_id; 
+				}
+				if ( ! empty( $cats_ids ) ) {
+					$args['category__in'] = $cats_ids;
+				}
 
-    </div> <!-- /.content -->
+				// Query posts
+				$wpex_query = new wp_query( $args );
 
-    <?php get_sidebar(); ?>
+				// Loop through posts
+				foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); ?>
 
-  </div> <!-- /.container -->
-</div> <!-- /.main -->
+					<a class="blogPost relatedPost" href="<?php the_permalink(); ?> ">
+						<div class="postImgWrapper">
+	    					<?php if (has_post_thumbnail( $post->ID ) ): ?>
+	    					  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+	    					  <div class="postImg" style="background-image: url('<?php echo $image[0]; ?>')">
+	    					  </div>
+	    					<?php endif; ?>
+	    					<span>Read Post</span>
+						</div>
+						<p class="postDate"><?php the_time('F j, Y'); ?></p>
+	    				<h4><?php the_title(); ?></h4>
+					</a>
+
+				<?php
+				// End loop
+				endforeach;
+
+				// Reset post data
+				wp_reset_postdata(); ?>
+			</div> <!-- .relatedListing -->
+		</div> <!-- .container -->
+	</div> <!-- .relatedPosts -->
+
+	<div class="blogComments">
+		<div class="container">
+			<?php comments_template( '', true ); ?>
+		</div>
+	</div>
+<?php endwhile; // end of the loop. ?>
 
 <?php get_footer(); ?>

@@ -56,7 +56,7 @@
     			}
     		}
     	 ?>
-    </div> <!--/.content -->
+    </div> <!--/.listing -->
 
     <?php get_sidebar(); ?>
 
