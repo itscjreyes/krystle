@@ -8,7 +8,7 @@
 		<?php while(the_repeater_field('banner_slider')): ?>
 			<div class="slide" style="background-image:url(<?php the_sub_field('slide_image'); ?>);">
 				<div class="container">
-					<?php the_sub_field('slide_text'); ?>
+					<h2><?php the_sub_field('slide_text'); ?></h2>
 				</div>
 			</div>
 		<?php endwhile; ?>
@@ -19,6 +19,14 @@
 <div class="about" id="about">
 	<div class="container">
 		<h2>About Me</h2>
+		<div class="aboutWrapper">
+			<div class="aboutText">
+				<?php the_field('about_text') ?>
+			</div> <!-- .aboutText -->
+			<div class="aboutImg">
+				<img src="<?php the_field('about_image') ?>" alt="">
+			</div>
+		</div> <!-- .aboutWrapper -->
 	</div> <!-- .container -->
 </div> <!-- .about -->
 
@@ -43,28 +51,31 @@
 
 <div class="latestPosts">
 	<div class="container">
-		<?php $the_query = new WP_Query( 'posts_per_page=3' ); ?>`
+		<h2>Latest Posts</h2>
+		<div class="latestWrapper">
+			<?php $the_query = new WP_Query( 'posts_per_page=3' ); ?>
 
-		<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+			<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
 
-		<a class="blogPost" href="<?php the_permalink(); ?> ">
-			<div class="postImgWrapper">
-				<?php if (has_post_thumbnail( $post->ID ) ): ?>
-				  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-				  <div class="postImg" style="background-image: url('<?php echo $image[0]; ?>')">
-				  </div>
-				<?php endif; ?>
-				<span>Read Post</span>
-			</div>
-			<p class="postDate"><?php the_time('F j, Y'); ?></p>
-			<h4><?php the_title(); ?></h4>
-		</a>
+			<a class="blogPost" href="<?php the_permalink(); ?> ">
+				<div class="postImgWrapper">
+					<?php if (has_post_thumbnail( $post->ID ) ): ?>
+						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+						<div class="postImg" style="background-image: url('<?php echo $image[0]; ?>')">
+						</div>
+					<?php endif; ?>
+					<span>Read Post</span>
+				</div>
+				<p class="postDate"><?php the_time('F j, Y'); ?></p>
+				<h4><?php the_title(); ?></h4>
+			</a>
 
-		<?php
-		endwhile;
-		wp_reset_postdata();
-		?>
-
+			<?php
+			endwhile;
+			wp_reset_postdata();
+			?>
+		</div>
+		<a href="/blog" class="borderButton">View All</a>
 	</div> <!-- .container -->
 </div> <!-- .latestPosts -->
 
@@ -87,9 +98,9 @@
 
 <div class="clients">
 	<div class="container">
+		<h2>Clients</h2>
+		<?php the_field('client_text') ?>
 		<div class="clientLogos">
-			<?php the_field('client_text') ?>
-
 			<?php
 
 			if(get_field('clients')): ?>
@@ -106,6 +117,12 @@
 <div class="contact" id="contact">
 	<div class="container">
 		<div class="instagramFeed"></div>
+		<div class="contactForm">
+			<h2>Get in Touch</h2>
+			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+				<?php the_content(); ?>
+			<?php endwhile; // end the loop?>
+		</div>
 	</div> <!-- .container -->
 </div> <!-- .contact -->
 

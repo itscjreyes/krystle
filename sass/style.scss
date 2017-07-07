@@ -38,7 +38,7 @@ body {
 .container {
 	max-width: 1300px;
 	margin: 0 auto;
-	padding: 4% 8%;
+	padding: 6% 8%;
 }
 
 .content {
@@ -57,14 +57,17 @@ body {
 
 /* Forms */
 
+.borderButton,
 input[type="submit"] {
 	background: transparent;
 	border: 1px solid #333;
 	color: #333;
 	text-transform: uppercase;
-	padding: 10px 15px;
+	padding: 10px 20px;
 	font-weight: 600;
 	margin-top: 20px !important;
+	font-size: 14px;
+	letter-spacing: 2px;
 	transition: all 0.3s ease;
 
 	&:hover,
@@ -251,17 +254,219 @@ button {
   background: white;
 }
 
+/* About */
+
+.about,
+.latestPosts,
+.clients,
+.contactForm {
+	h2 {
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 2px;
+		margin: 0 auto 50px;
+	}
+}
+
+.aboutWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.aboutText,
+.aboutImg {
+	width: 50%;
+}
+
+.aboutImg img {
+	max-width: 300px;
+	width: 100%;
+	margin: auto;
+	display: block;
+}
+
+/* Testimonials */
+
+.testimonials {
+	.container {
+		position: relative;
+		padding: 8%;
+
+		&:before {
+			position: absolute;
+			font-family: 'FontAwesome';
+			content: '\f10d';
+			font-size: 70px;
+			color: #333;
+			opacity: 0.1;
+			top: 50px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			text-align: center;
+		}
+	}
+
+	.slick-slide {
+		background: transparent;
+		text-align: center;
+	}
+
+	.slick-dots {
+		opacity: 1;
+		bottom: -60px;
+
+		li button:after {
+			opacity: 0.3;
+			border: 1px solid #333;
+		}
+
+		li button:hover:after,
+		li.slick-active button:after {
+			background: #333;
+			opacity: 0.3;
+		}
+	}
+}
+
+.quoteText {
+	max-width: 600px;
+	margin: auto;
+	font-size: 20px;
+}
+
+.quoteName {
+	margin: auto;
+	padding-top: 20px;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: $fontTitle;
+	text-transform: uppercase;
+}
+
+/* Latest Posts */
+
+.latestWrapper {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	.blogPost {
+		width: 30%;
+	}
+}
+
+.latestPosts {
+	text-align: center;
+}
+
 /* Odometer */
 
+.counter {
+	.container {
+		display: flex;
+		justify-content: space-around;
 
+		& > div {
+			width: 25%;
+		}
+	}
+}
 
-/* Instagram Feed */
+.countNumber {
+	text-align: center;
+	width: 100%;
+	font-size: 60px;
+	font-weight: 600;
+	margin: auto;
+	padding: 0;
+	opacity: 0.5;
+}
+
+.countText {
+	text-align: center;
+	font-family: $fontTitle;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding: 10px 0 0;
+	margin: auto;
+}
+
+/* Clients */
+
+.clients {
+	p {
+		text-align: center;
+	}
+}
+
+.clientLogos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+
+	img {
+		max-height: 100px;
+		width: auto;
+		margin: 10px 20px;
+	}
+}
+
+/* Contact */
+
+.contact {
+	.container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+}
+
+.instagramFeed {
+	width: 450px;
+	height: 450px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
 
 .instaImage {
 	display: block;
-	width: 100px;
-	height: 100px;
+	width: 140px;
+	height: 140px;
 	background-size: cover;
+	margin: auto;
+	filter: grayscale(1);
+
+	&:hover,
+	&:focus {
+		filter: grayscale(0);
+	}
+}
+
+.contactForm {
+	width: 40%;
+	max-width: 450px;
+
+	h2 {
+		margin-bottom: 30px;
+	}
+
+	input:not([type="submit"]),
+	textarea {
+		padding: 10px;
+		width: 100%;
+		font-size: 14px;
+		background: transparent;
+		border: 1px solid #b7b7b7;
+	}
 }
 
 /*
@@ -438,6 +643,24 @@ Blog Listing
 
 .sidebar {
 	width: 28%;
+
+	h3 {
+		text-transform: uppercase;
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+
+	li {
+		padding-bottom: 10px;
+	}
+
+	.post-date {
+		display: block;
+		text-transform: uppercase;
+		font-family: $fontTitle;
+		font-size: 12px;
+		letter-spacing: 2px;
+	}
 }
 
 .archiveBanner {

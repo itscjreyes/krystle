@@ -1,6 +1,7 @@
 header {
 	position: fixed;
 	width: 100%;
+	top: 0;
 	background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
 	z-index: 5;
 	transition: all 0.3s ease;
@@ -56,8 +57,10 @@ header {
 	}
 
 	h1 {
+		position: relative;
 		margin: 0;
 		line-height: 0;
+		z-index: 5;
 
 		a {
 			text-transform: uppercase;
@@ -92,6 +95,132 @@ ul.menu {
 			font-size: 14px;
 			font-weight: 600;
 			letter-spacing: 1px;
+		}
+	}
+}
+
+.mobileMenu {
+	display: none;
+	position: relative;
+	height: 25px;
+	width: 35px;
+	z-index: 5;
+
+	span {
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background: white;
+		transition: all 0.3s ease;
+
+		&:nth-child(1) {
+			top: 0;
+		}
+
+		&:nth-child(2) {
+			top: 11px;
+		}
+
+		&:nth-child(3) {
+			bottom: 0;
+		}
+	}
+
+	&.show {
+		span {
+			background: #333;
+
+			&:nth-child(1) {
+				transform: rotate(45deg);
+				top: 10px;
+			}
+
+			&:nth-child(2) {
+				width: 0;
+			}
+
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+				top: 10px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	header.mobile {
+		.container{
+			padding: 20px 8%;
+		}
+		.mobileMenu {
+			display: block;
+		}
+
+		h1 a {
+			font-size: 14px;
+			padding: 15px;
+		}
+
+		&.show h1 a {
+			color: #333;
+			border: 1px solid #333;
+		}
+
+		nav {
+			position: absolute;
+			opacity: 0;
+			visibility: hidden;
+			height: 100vh;
+			width: 100%;
+			left: 0;
+			top: 0;
+			background: rgba(255,255,255,0.8);
+			transition: all 0.3s ease;
+
+			&.show {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		ul.menu {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			height: 100vh;
+
+			li {
+				margin: 0;
+				padding: 2% 0;
+
+				a {
+					color: #333;
+					font-size: 20px;
+					letter-spacing: 5px;
+					padding: 10px 0;
+				}
+			}
+		}
+
+		&.sticky {
+			h1 a {
+				font-size: 14px;
+				padding: 15px;
+			}
+
+			.mobileMenu {
+				border-bottom: none;
+
+				span {
+					background: #333;
+				}
+			}
+
+			&.show {
+				background: transparent;
+			}
 		}
 	}
 }

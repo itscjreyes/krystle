@@ -11,7 +11,7 @@ app.init = function(){
 
 app.smoothScroll = function(){
 	$('a.smooth').on('click', function(event){
-		event.preventDefault();
+
 		var navHeight = $('header').height();
 
 		$('html, body').animate({
@@ -21,6 +21,28 @@ app.smoothScroll = function(){
 };
 
 app.stickyMenu = function(){
+	$(window).resize(function(){
+		if ($(window).width() > 750){
+			$('header').removeClass('mobile');
+		}
+
+		else {
+			if ($('header.mobile').length) {
+
+			}
+			else {
+				$('header').addClass('mobile');
+			}
+		}
+	}).resize();
+
+	$('.mobileMenu').on('click', function(e){
+		e.preventDefault();
+		$('.mobileMenu').toggleClass('show');
+		$('nav').toggleClass('show');
+		$('header').toggleClass('show');
+	});
+
 	var bannerHeight = $('header').height();
 
 	$(window).scroll(function(){
@@ -40,14 +62,18 @@ app.homeBanner = function(){
 		nextArrow: '<button class="arrow-next"><i class="fa fa-angle-right"></i></button>',
 		prevArrow: '<button class="arrow-prev"><i class="fa fa-angle-left"></i></button>',
 		autoplay: true,
-		autoplaySpeed: 5000,
+		autoplaySpeed: 2000,
 		fade: true,
 		cssEase: 'ease'
 	});
 };
 
 app.testimonials = function(){
-	$('.testSlider').slick();
+	$('.testSlider').slick({
+		dots: true,
+		autoplay: true,
+		autoplaySpeed: 4000
+	});
 };
 
 app.odometer = function () {
@@ -88,6 +114,7 @@ app.odometer = function () {
 };
 
 var photoFeed = {};
+
 photoFeed.getPhotos = function() {
 	var instaURL = 'https://api.instagram.com/v1/users/self/media/recent/';
 	var token= "6706018.5d40f6e.f2b68d78acc74cbfb6c83b90a6596392";
@@ -103,8 +130,9 @@ photoFeed.getPhotos = function() {
 			}
 		});
 };
+
 photoFeed.displayPhotos = function(res){
-	for(var i = 8; i--;){
+	for(var i = 9; i--;){
 		var post = res.data[i];
 		var photo = post.images.standard_resolution.url;
 		var url = post.link;
