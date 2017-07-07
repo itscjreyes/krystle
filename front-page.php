@@ -82,16 +82,19 @@
 <div class="counter">
 	<div class="container">
 		<div class="count1">
+			<p id="od1num" class="hiddenNum"><?php the_field('number_1') ?></p>
 			<p id="odometer1" class="odometer countNumber">0</p>
-			<p class="countText">Lorem ipsum dolor</p>
+			<p class="countText"><?php the_field('text_1') ?></p>
 		</div>
 		<div class="count2">
+			<p id="od2num" class="hiddenNum"><?php the_field('number_2') ?></p>
 			<p id="odometer2" class="odometer countNumber">0</p>
-			<p class="countText">Lorem ipsum dolor</p>
+			<p class="countText"><?php the_field('text_2') ?></p>
 		</div>
 		<div class="count3">
+			<p id="od3num" class="hiddenNum"><?php the_field('number_3') ?></p>
 			<p id="odometer3" class="odometer countNumber">0</p>
-			<p class="countText">Lorem ipsum dolor</p>
+			<p class="countText"><?php the_field('text_3') ?></p>
 		</div>
 	</div> <!-- .container -->
 </div> <!-- .counter -->

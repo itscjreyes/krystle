@@ -112,7 +112,6 @@ app.testimonials = function(){
 };
 
 app.odometer = function () {
-
 	$.fn.isOnScreen = function () {
 
 		var win = $(window);
@@ -131,18 +130,26 @@ app.odometer = function () {
 		return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
 	};
 
+	var od1num = $('#od1num').text();
+	var od2num = $('#od2num').text();
+	var od3num = $('#od3num').text();
+
+	console.log('#1: ' + od1num);
+	console.log('#2: ' + od2num);
+	console.log('#3: ' + od3num);
+
 	$(window).scroll(function(){
 		if ($('.counter').isOnScreen()) {
 			setTimeout(function () {
-				odometer1.innerHTML = 20;
+				odometer1.innerHTML = od1num;
 			}, 100);
 
 			setTimeout(function () {
-				odometer2.innerHTML = 95;
+				odometer2.innerHTML = od2num;
 			}, 500);
 
 			setTimeout(function () {
-				odometer3.innerHTML = 130;
+				odometer3.innerHTML = od3num;
 			}, 1000);
 		} else {}
 	});

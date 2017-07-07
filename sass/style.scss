@@ -376,6 +376,10 @@ button {
 			width: 25%;
 		}
 	}
+
+	p:first-child {
+		display: none;
+	}
 }
 
 .countNumber {
