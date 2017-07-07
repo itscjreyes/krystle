@@ -15,7 +15,6 @@ $fontMain: 'Open Sans', sans-serif;
 @import 'normalize';
 @import 'typography';
 @import 'navigation';
-@import 'sidebar';
 @import 'comments';
 @import 'footer';
 
@@ -59,6 +58,7 @@ body {
 
 .borderButton,
 input[type="submit"] {
+	display: inline-block;
 	background: transparent;
 	border: 1px solid #333;
 	color: #333;
@@ -293,7 +293,7 @@ button {
 .testimonials {
 	.container {
 		position: relative;
-		padding: 8%;
+		padding: 8% 8% 6%;
 
 		&:before {
 			position: absolute;
@@ -317,7 +317,9 @@ button {
 
 	.slick-dots {
 		opacity: 1;
-		bottom: -60px;
+		bottom: 0;
+		position: relative;
+		margin-bottom: 0;
 
 		li button:after {
 			opacity: 0.3;
@@ -435,12 +437,13 @@ button {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: center;
+	transition: all 0.3s ease;
 }
 
 .instaImage {
 	display: block;
-	width: 140px;
-	height: 140px;
+	width: 33%;
+	height: 33%;
 	background-size: cover;
 	margin: auto;
 	filter: grayscale(1);
@@ -650,8 +653,13 @@ Blog Listing
 		letter-spacing: 2px;
 	}
 
-	li {
-		padding-bottom: 10px;
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+			padding-bottom: 10px;
+		}
 	}
 
 	.post-date {
@@ -780,3 +788,5 @@ a[rel~="category"] {
 		text-align: center;
 	}
 }
+
+@import 'mediaQueries';

@@ -10,14 +10,48 @@ app.init = function(){
 };
 
 app.smoothScroll = function(){
-	$('a.smooth').on('click', function(event){
+	// Select all links with hashes
+	$('a[href*="#"]')
+	  // Remove links that don't actually link to anything
+	  .not('[href="#"]')
+	  .not('[href="#0"]')
+	  .click(function(event) {
+	    // On-page links
+	    if (
+	      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+	      && 
+	      location.hostname == this.hostname
+	    ) {
+	      // Figure out element to scroll to
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+	      // Does a scroll target exist?
+	      if (target.length) {
+	        // Only prevent default if animation is actually gonna happen
+	        event.preventDefault();
+	        $('.mobileMenu').removeClass('show');
+	        $('nav').removeClass('show');
+	        $('header').removeClass('show');
+	        $('body').removeClass('menuShow');
+	        var navHeight = $('header').height();
 
-		var navHeight = $('header').height();
-
-		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top - navHeight
-		}, 500);
-	});
+	        $('html, body').animate({
+	          scrollTop: target.offset().top - navHeight
+	        }, 1000, function() {
+	          // Callback after animation
+	          // Must change focus!
+	          var $target = $(target);
+	          $target.focus();
+	          if ($target.is(":focus")) { // Checking if the target was focused
+	            return false;
+	          } else {
+	            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+	            $target.focus(); // Set focus again
+	          };
+	        });
+	      }
+	    }
+	  });
 };
 
 app.stickyMenu = function(){
@@ -41,6 +75,7 @@ app.stickyMenu = function(){
 		$('.mobileMenu').toggleClass('show');
 		$('nav').toggleClass('show');
 		$('header').toggleClass('show');
+		$('body').toggleClass('menuShow');
 	});
 
 	var bannerHeight = $('header').height();
@@ -62,7 +97,7 @@ app.homeBanner = function(){
 		nextArrow: '<button class="arrow-next"><i class="fa fa-angle-right"></i></button>',
 		prevArrow: '<button class="arrow-prev"><i class="fa fa-angle-left"></i></button>',
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 3000,
 		fade: true,
 		cssEase: 'ease'
 	});

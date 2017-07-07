@@ -75,7 +75,7 @@
 			wp_reset_postdata();
 			?>
 		</div>
-		<a href="/blog" class="borderButton">View All</a>
+		<a href="<?php echo home_url(); ?>/blog" class="borderButton">View All</a>
 	</div> <!-- .container -->
 </div> <!-- .latestPosts -->
 
