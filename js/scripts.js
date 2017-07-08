@@ -134,6 +134,8 @@ app.odometer = function () {
 	var od2num = $('#od2num').text();
 	var od3num = $('#od3num').text();
 
+	$('.hiddenNum').css('display', 'none');
+
 	console.log('#1: ' + od1num);
 	console.log('#2: ' + od2num);
 	console.log('#3: ' + od3num);

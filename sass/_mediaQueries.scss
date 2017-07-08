@@ -153,6 +153,12 @@ Media Queries
 			padding-top: 20%;
 		}
 	}
+
+	.relatedListing {
+		.blogPost:nth-child(3) {
+			display: none;
+		}
+	}
 } /* End max-width:750px */
 
 @media screen and (max-width: 500px) {
