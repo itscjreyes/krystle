@@ -86,15 +86,110 @@ ul.menu {
 		display: inline-block;
 		margin-right: 10px;
 		padding: 0;
+		position: relative;
 
 		a {
 			display: block;
 			padding: 25px 10px;
 			font-family: $fontTitle;
 			text-transform: uppercase;
-			font-size: 14px;
-			font-weight: 600;
+			font-size: 13px;
+			font-weight: 400;
 			letter-spacing: 1px;
+		}
+	}
+}
+
+li.has-submenu {
+	&:hover {
+		ul.subMenu {
+			bottom: -140px;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+ul.subMenu {
+	position: absolute;
+	left: 0;
+	bottom: -90px;
+	padding: 0;
+	visibility: hidden;
+	opacity: 0;
+	width: auto;
+	transition: all 0.3s ease;
+
+	li {
+		width: 100%;
+		a {
+			padding: 10px;
+			background: rgba(0,0,0,0.3);
+		}
+	}
+
+	.fa {
+		display: none;
+	}
+}
+
+header.sticky ul.subMenu {
+	li {
+		a {
+			background: white;
+			color: #333;
+			transition: all 0.3s ease;
+
+			&:hover,
+			&:focus {
+				border: none;
+				padding: 10px;
+			}
+		}
+	}
+}
+
+nav.show {
+	li.has-submenu {
+		&:hover {
+			ul.subMenu {
+				bottom: 0;
+			}
+		}
+	}
+
+	ul.subMenu {
+		visibility: visible;
+		opacity: 1;
+		position: relative;
+		bottom: 0;
+
+		li {
+			width: auto;
+
+			a {
+				background: transparent;
+			}
+		}
+
+		span {
+			display: none;
+		}
+
+		.fa {
+			display: inline-block;
+		}
+	}
+
+	#searchform {
+		input {
+			border: 1px solid #333;
+			color: #333;
+			background: white;
+		}
+
+		button .fa {
+			color: #333;
 		}
 	}
 }
@@ -144,5 +239,44 @@ ul.menu {
 				top: 10px;
 			}
 		}
+	}
+}
+
+header #searchform {
+	position: relative;
+
+	input {
+		padding: 5px 10px;
+		width: 150px;
+		font-size: 14px;
+		background: rgba(255,255,255,0.2);
+		border: 1px solid white;
+		color: white;
+		outline: none;
+		transition: all 0.3s ease;
+	}
+
+	button {
+		position: absolute;
+		right: 3px;
+		top: 3px;
+		background: transparent;
+		border: none;
+
+		.fa {
+			color: white;
+		}
+	}
+}
+
+header.sticky #searchform {
+	input {
+		border: 1px solid #333;
+		color: #333;
+		background: white;
+	}
+
+	button .fa {
+		color: #333;
 	}
 }

@@ -25,7 +25,7 @@
 
 		$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
 		foreach( $recent_posts as $recent ){
-				echo '<h2>' . get_the_title($recent["ID"]) . '</h2><a href="' . get_permalink($recent["ID"]) . '">Read Post</a>';
+				echo '<h2>' . get_the_title($recent["ID"]) . '</h2><a href="' . get_permalink($recent["ID"]) . '">Read More</a>';
 			}
 			wp_reset_query();
 		?>
@@ -47,10 +47,10 @@
 	    					  <div class="postImg" style="background-image: url('<?php echo $image[0]; ?>')">
 	    					  </div>
 	    					<?php endif; ?>
-	    					<span>Read Post</span>
+	    					<span>Read More</span>
     					</div>
-    					<p class="postDate"><?php the_time('F j, Y'); ?></p>
-	    				<h4><?php the_title(); ?></h4>
+    					<h4><?php the_title(); ?></h4>
+    					<p class="postDate"><?php the_time('d F, Y'); ?></p>
     				</a>
     			<?php 
     			}

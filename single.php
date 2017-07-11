@@ -7,7 +7,7 @@
 		<div class="banner blogBanner" style="background-image: url('<?php echo $image[0]; ?>')">
 	<?php endif; ?>
 		<div class="container">
-			<span><?php the_date(); ?></span>
+			<span><?php the_date('d F, Y'); ?></span>
 			<h2><?php the_title(); ?></h2>
 		</div>
 	</div>
@@ -16,12 +16,12 @@
 		<div class="container">
 
 			<div class="postContent">
-				<?php the_category(' '); ?>
 				<?php the_content(); ?>
 				<?php wp_link_pages(array(
 					'before' => '<div class="page-link"> Pages: ',
 					'after' => '</div>'
 				)); ?>
+				<div class="categoryTags">Tags: <?php the_category(' '); ?></div>
 			</div><!-- .postContent -->
 
 			<div class="postNav">
@@ -69,8 +69,8 @@
 	    					<?php endif; ?>
 	    					<span>Read Post</span>
 						</div>
-						<p class="postDate"><?php the_time('F j, Y'); ?></p>
 	    				<h4><?php the_title(); ?></h4>
+						<p class="postDate"><?php the_time('d F, Y'); ?></p>
 					</a>
 
 				<?php

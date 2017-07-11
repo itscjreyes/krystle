@@ -51,9 +51,9 @@
 
 <div class="latestPosts">
 	<div class="container">
-		<h2>Latest Posts</h2>
+		<h2>From My Journal</h2>
 		<div class="latestWrapper">
-			<?php $the_query = new WP_Query( 'posts_per_page=3' ); ?>
+			<?php $the_query = new WP_Query( 'posts_per_page=6' ); ?>
 
 			<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
 
@@ -64,10 +64,10 @@
 						<div class="postImg" style="background-image: url('<?php echo $image[0]; ?>')">
 						</div>
 					<?php endif; ?>
-					<span>Read Post</span>
+					<span>Read More</span>
 				</div>
-				<p class="postDate"><?php the_time('F j, Y'); ?></p>
 				<h4><?php the_title(); ?></h4>
+				<p class="postDate"><?php the_time('d F, Y'); ?></p>
 			</a>
 
 			<?php
