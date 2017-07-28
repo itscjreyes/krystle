@@ -1,6 +1,6 @@
 <?php get_header();  ?>
 
-<div class="homeBanner">
+<div class="homeBanner" id="home">
 	<?php
 
 	if(get_field('banner_slider')): ?>
@@ -49,7 +49,7 @@
 	</div> <!-- .container -->
 </div> <!-- .testimonials -->
 
-<div class="latestPosts">
+<div class="latestPosts" id="blog">
 	<div class="container">
 		<h2>From My Journal</h2>
 		<div class="latestWrapper">
@@ -96,6 +96,11 @@
 			<p id="odometer3" class="odometer countNumber">0</p>
 			<p class="countText"><?php the_field('text_3') ?></p>
 		</div>
+		<div class="count4">
+			<p id="od4num" class="hiddenNum"><?php the_field('number_4') ?></p>
+			<p id="odometer4" class="odometer countNumber">0</p>
+			<p class="countText"><?php the_field('text_4') ?></p>
+		</div>
 	</div> <!-- .container -->
 </div> <!-- .counter -->
 
@@ -109,7 +114,7 @@
 			if(get_field('clients')): ?>
 
 				<?php while(the_repeater_field('clients')): ?>
-					<img src="<?php the_sub_field('client_logo'); ?>" alt="">
+					<div><img src="<?php the_sub_field('client_logo'); ?>" alt=""></div>
 				<?php endwhile; ?>
 
 			 <?php endif; ?>

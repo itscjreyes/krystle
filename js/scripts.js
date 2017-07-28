@@ -5,6 +5,7 @@ app.init = function(){
 	app.stickyMenu();
 	app.homeBanner();
 	app.testimonials();
+	app.clientLogos();
 	app.odometer();
 	app.instagram();
 };
@@ -107,54 +108,68 @@ app.testimonials = function(){
 	$('.testSlider').slick({
 		dots: true,
 		autoplay: true,
-		autoplaySpeed: 4000
+		autoplaySpeed: 5000
+	});
+};
+
+app.clientLogos = function(){
+	$('.clientLogos').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		infinite: true
 	});
 };
 
 app.odometer = function () {
-	$.fn.isOnScreen = function () {
+	if ($('body').hasClass('home')){
+		$.fn.isOnScreen = function () {
 
-		var win = $(window);
+			var win = $(window);
 
-		var viewport = {
-			top: win.scrollTop(),
-			left: win.scrollLeft()
+			var viewport = {
+				top: win.scrollTop(),
+				left: win.scrollLeft()
+			};
+			viewport.right = viewport.left + win.width();
+			viewport.bottom = viewport.top + win.height();
+
+			var bounds = this.offset();
+			bounds.right = bounds.left + this.outerWidth();
+			bounds.bottom = bounds.top + this.outerHeight();
+
+			return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
 		};
-		viewport.right = viewport.left + win.width();
-		viewport.bottom = viewport.top + win.height();
 
-		var bounds = this.offset();
-		bounds.right = bounds.left + this.outerWidth();
-		bounds.bottom = bounds.top + this.outerHeight();
+		var od1num = $('#od1num').text();
+		var od2num = $('#od2num').text();
+		var od3num = $('#od3num').text();
+		var od4num = $('#od4num').text();
 
-		return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-	};
+		$('.hiddenNum').css('display', 'none');
 
-	var od1num = $('#od1num').text();
-	var od2num = $('#od2num').text();
-	var od3num = $('#od3num').text();
+		$(window).scroll(function(){
+			if ($('.counter').isOnScreen()) {
+				setTimeout(function () {
+					odometer1.innerHTML = od1num;
+				}, 100);
 
-	$('.hiddenNum').css('display', 'none');
+				setTimeout(function () {
+					odometer2.innerHTML = od2num;
+				}, 500);
 
-	console.log('#1: ' + od1num);
-	console.log('#2: ' + od2num);
-	console.log('#3: ' + od3num);
+				setTimeout(function () {
+					odometer3.innerHTML = od3num;
+				}, 1000);
 
-	$(window).scroll(function(){
-		if ($('.counter').isOnScreen()) {
-			setTimeout(function () {
-				odometer1.innerHTML = od1num;
-			}, 100);
-
-			setTimeout(function () {
-				odometer2.innerHTML = od2num;
-			}, 500);
-
-			setTimeout(function () {
-				odometer3.innerHTML = od3num;
-			}, 1000);
-		} else {}
-	});
+				setTimeout(function () {
+					odometer4.innerHTML = od4num;
+				}, 1500);
+			} else {}
+		});
+	}
+	else {}
 };
 
 var photoFeed = {};

@@ -30,15 +30,16 @@
 
 		<nav>
 			<ul class="menu">
-				<li><a href="<?php echo home_url(); ?>">Home</a></li>
+				<li><a href="<?php echo home_url(); ?>/#home" class="smooth">Home</a></li>
 				<li><a href="<?php echo home_url(); ?>/#about" class="smooth">About</a></li>
-				<li><a href="<?php echo home_url(); ?>/blog">Journal</a></li>
+				<li><a href="<?php echo home_url(); ?>/#blog" class="smooth">Journal</a></li>
 				<li class="has-submenu"><a href="<?php echo home_url(); ?>/#contact" class="smooth">Contact</a>
 					<ul class="subMenu">
 						<li><a href="#"><span>Facebook</span><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#"><span>Instagram</span><i class="fa fa-instagram"></i></a></li>
 						<li><a href="#"><span>Pinterest</span><i class="fa fa-pinterest"></i></a></li>
 						<li><a href="#"><span>Twitter</span><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><span>LinkedIn</span><i class="fa fa-linkedin"></i></a></li>
 					</ul>
 				</li>
 				<li><?php get_search_form(); ?></li>

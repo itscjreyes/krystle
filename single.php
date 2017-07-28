@@ -21,7 +21,7 @@
 					'before' => '<div class="page-link"> Pages: ',
 					'after' => '</div>'
 				)); ?>
-				<div class="categoryTags">Tags: <?php the_category(' '); ?></div>
+				<div class="categoryTags"><span>Categories:</span> <?php the_category(' '); ?></div>
 			</div><!-- .postContent -->
 
 			<div class="postNav">
@@ -85,7 +85,7 @@
 
 	<div class="blogComments">
 		<div class="container">
-			<?php comments_template( '', true ); ?>
+			<?php comment_form(array('title_reply'=>'Leave a Comment')); ?>
 		</div>
 	</div>
 <?php endwhile; // end of the loop. ?>

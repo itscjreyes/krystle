@@ -93,7 +93,7 @@ ul.menu {
 			padding: 25px 10px;
 			font-family: $fontTitle;
 			text-transform: uppercase;
-			font-size: 13px;
+			font-size: 15px;
 			font-weight: 400;
 			letter-spacing: 1px;
 		}
@@ -103,7 +103,7 @@ ul.menu {
 li.has-submenu {
 	&:hover {
 		ul.subMenu {
-			bottom: -140px;
+			bottom: -190px;
 			visibility: visible;
 			opacity: 1;
 		}

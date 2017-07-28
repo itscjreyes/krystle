@@ -213,6 +213,17 @@ Media Queries
 	}
 
 	/* ODOMETER */
+	.counter {
+		.container {
+			flex-wrap: wrap;
+
+			& > div {
+				width: 50%;
+				margin: 10px auto;
+			}
+		}
+	}
+
 	.countNumber {
 		font-size: 20px;
 	}
