@@ -114,11 +114,12 @@ app.testimonials = function(){
 
 app.clientLogos = function(){
 	$('.clientLogos').slick({
-		slidesToShow: 1,
+		slidesToShow: 6,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 2000,
-		infinite: true
+		autoplaySpeed: 2500,
+		infinite: true,
+		variableWidth: true
 	});
 };
 
