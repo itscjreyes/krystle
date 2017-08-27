@@ -65,27 +65,27 @@ function hackeryou_scripts() {
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	wp_deregister_script('jquery');
   wp_enqueue_script(
-  	'jquery',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
-  	false, //dependencies
-  	null, //version number
-  	true //load in footer
+	'jquery',
+	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+	false, //dependencies
+	null, //version number
+	true //load in footer
   );
 
   wp_enqueue_script(
-    'plugins', //handle
-    get_template_directory_uri() . '/js/plugins.js', //source
-    false, //dependencies
-    null, // version number
-    true //load in footer
+	'plugins', //handle
+	get_template_directory_uri() . '/js/plugins.js', //source
+	false, //dependencies
+	null, // version number
+	true //load in footer
   );
 
   wp_enqueue_script(
-    'scripts', //handle
-    get_template_directory_uri() . '/js/main.min.js', //source
-    array( 'jquery', 'plugins' ), //dependencies
-    null, // version number
-    true //load in footer
+	'scripts', //handle
+	get_template_directory_uri() . '/js/main.min.js', //source
+	array( 'jquery', 'plugins' ), //dependencies
+	null, // version number
+	true //load in footer
   );
 }
 
@@ -133,7 +133,7 @@ add_filter( 'wp_page_menu_args', 'hackeryou_page_menu_args' );
  * Sets the post excerpt length to 40 characters.
  */
 function hackeryou_excerpt_length( $length ) {
-	return 40;
+	return 10;
 }
 add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
 
@@ -141,7 +141,7 @@ add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function hackeryou_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
+	return '';
 }
 
 /**
@@ -283,6 +283,29 @@ function get_post_parent($post) {
 		return $post->ID;
 	}
 }
+
+/* Reformat Post Date in sidebar recent post widget */
+add_filter( 'widget_display_callback', function ( $instance, $widget_instance )
+{
+	if ($widget_instance->id_base === 'recent-posts'
+		&& $instance['show_date'] === true
+	) {
+
+		add_filter( 'get_the_date', function ( $the_date, $d, $post )
+		{
+			// Set new date format
+			$d = 'd F, Y';
+			// Set new value format to $the_date
+			$the_date = mysql2date( $d, $post->post_date );
+
+			return $the_date;
+			
+		}, 10, 3 );
+
+	}
+	return $instance;
+
+}, 10, 2 );
 
 /* Hide admin bar */
 add_filter('show_admin_bar', '__return_false');

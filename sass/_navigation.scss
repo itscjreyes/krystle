@@ -30,17 +30,12 @@ header {
 		}
 
 		h1 a {
-			border: 1px solid #333;
-			font-size: 14px;
-			padding: 14px;
 			transition: all 0.3s ease;
 
 			&:hover,
 			&:focus {
-				background: #333;
-				color: white;
-				border-bottom: 1px solid #333;
-				padding-bottom: 15px;
+				border-bottom: none;
+				padding-bottom: 20px;
 			}
 		}
 	}
@@ -64,17 +59,10 @@ header {
 
 		a {
 			text-transform: uppercase;
-			border: 1px solid white;
 			display: inline-block;
 			font-size: 18px;
 			letter-spacing: 3px;
-			padding: 20px;
-
-			&:hover,
-			&:focus {
-				background: white;
-				color: #333;
-			}
+			padding: 20px 0;
 		}
 	}
 }
@@ -103,7 +91,7 @@ ul.menu {
 li.has-submenu {
 	&:hover {
 		ul.subMenu {
-			bottom: -190px;
+			bottom: -76px;
 			visibility: visible;
 			opacity: 1;
 		}

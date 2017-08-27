@@ -9,8 +9,9 @@
 
 $fontTitle: 'Roboto Condensed', sans-serif;
 $fontMain: 'Open Sans', sans-serif;
+$handwritten: 'Kaushan Script', cursive;
 
-@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Open+Sans);
+@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Open+Sans|Kaushan+Script);
 @import url(//github.hubspot.com/odometer/themes/odometer-theme-default.css);
 @import 'normalize';
 @import 'typography';
@@ -54,6 +55,12 @@ body {
 	padding-top: 65px;
 }
 
+.handwritten {
+	font-family: $handwritten;
+	text-transform: none;
+	letter-spacing: -2px;
+}
+
 /* Forms */
 
 .borderButton,
@@ -61,6 +68,7 @@ input[type="submit"] {
 	display: inline-block;
 	background: transparent;
 	border: 1px solid #333;
+	box-shadow: none;
 	color: #333;
 	text-transform: uppercase;
 	padding: 10px 20px;
@@ -89,7 +97,7 @@ Home page
 
 .home {
 	& > div:nth-child(even) {
-		background-color: #f9f9f9;
+		background-color: #efefef;
 	}
 }
 
@@ -107,15 +115,19 @@ Home page
 }
 
 .slide1 {
-  background-image: url("https://unsplash.it/g/600/300/?blur");
+  background-image: url("http://www.krystlereyes.com/wp-content/uploads/2017/08/Create.jpg");
 }
 
 .slide2 {
-  background-image: url("https://unsplash.it/g/600/350/?blur");
+  background-image: url("http://www.krystlereyes.com/wp-content/uploads/2017/08/Connect.jpg");
 }
 
 .slide3 {
-  background-image: url("https://unsplash.it/g/600/400/?blur");
+  background-image: url("http://www.krystlereyes.com/wp-content/uploads/2017/08/Explore.jpg");
+}
+
+.slide4 {
+	background-image: url("http://www.krystlereyes.com/wp-content/uploads/2017/08/Aloha.jpg");
 }
 
 .slick-slide .container {
@@ -123,25 +135,29 @@ Home page
   padding: 4% 8%;
   transition: all 1.2s ease;
   transition-delay: 0.5s;
-  opacity: 0;
-  bottom: -50px;
-  max-width: 500px;
-  margin: auto;
+  bottom: 0;
   min-height: 100vh;
   max-height: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: left;
 }
 
 .slick-slide h2 {
   padding: 0;
   margin: 0;
-  color: white;
+  color: #333;
   text-transform: uppercase;
-  letter-spacing: 10px;
-  font-size: 36px;
+  font-size: 70px;
+
+  &.handwritten {
+	text-transform: none;
+  }
+
+  &.active {
+  	color: white;
+  }
 }
 
 .slick-slide h3 {
@@ -149,11 +165,6 @@ Home page
   color: white;
   font-weight: 400;
   font-size: 16px;
-}
-
-.slick-slide.slick-active .container {
-  bottom: 0;
-  opacity: 1;
 }
 
 button {
@@ -277,16 +288,39 @@ button {
 	}
 }
 
+.about,
+.latestPosts,
+.clients {
+	h2 {
+		position: relative;
+		padding-bottom: 15px;
+
+		&:after {
+			position: absolute;
+			content: "";
+			width: 60px;
+			height: 2px;
+			background: #333;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	}
+}
+
 .aboutWrapper {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	flex-wrap: wrap;
 }
 
-.aboutText,
+.aboutText {
+	width: 60%;
+}
+
 .aboutImg {
-	width: 50%;
+	width: 38%;
 }
 
 .aboutImg img {
@@ -299,33 +333,18 @@ button {
 /* Testimonials */
 
 .testimonials {
-	background-color: transparent;
-	background-image: url('http://cjreyes.ca/krystle/wp-content/uploads/2017/07/Quotes-FunFacts_02.jpg');
-	background-size: cover;
-	background-position: center;
-
 	.container {
 		position: relative;
-		padding: 8% 8% 6%;
+		text-align: center;
 
-		&:before {
-			position: absolute;
-			font-family: 'FontAwesome';
-			content: '\f10d';
-			font-size: 70px;
-			color: white;
-			opacity: 0.5;
-			top: 50px;
-			left: 0;
-			right: 0;
-			margin: auto;
-			text-align: center;
+		img {
+			margin: 0 auto 10px;
+			width: 50px;
 		}
 	}
 
 	.slick-slide {
 		background: transparent;
-		text-align: center;
 	}
 
 	.slick-dots {
@@ -336,33 +355,31 @@ button {
 
 		li button:after {
 			opacity: 1;
-			border: 1px solid white;
+			border: 1px solid #333ite;
 		}
 
 		li button:hover:after,
 		li.slick-active button:after {
-			background: white;
+			background: #333;
 			opacity: 1;
 		}
 	}
 }
 
 .quoteText {
-	max-width: 600px;
+	max-width: 800px;
 	margin: auto;
 	font-size: 18px;
-	color: white;
-	text-shadow: 0 0 20px rgba(0,0,0,0.3);
+	color: #333;
 }
 
 .quoteName {
-	color: white;
+	color: #333;
 	margin: auto;
 	padding-top: 20px;
 	font-size: 18px;
 	font-weight: 700;
 	font-family: $fontTitle;
-	text-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 /* Latest Posts */
@@ -431,33 +448,43 @@ button {
 .clients {
 	p {
 		text-align: center;
-		max-width: 850px;
+		max-width: 700px;
 		margin: auto;
 	}
 }
 
-.clientLogos {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	max-width: 800px;
-	margin: 60px auto 10px;
+.clientLogosContainer {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 40px;
+	margin-top: 50px;
+}
 
-	img {
+.clientLogos {
+	height: 40px;
+	overflow: hidden;
+	position: absolute;
+	left: 10px;
+	margin-right: 10px;
+	top: 0;
+
+	.clientLogo {
 		height: 40px;
 		width: auto;
 		filter: grayscale(1);
 		transition: all 0.3s ease;
+		float: left;
+		margin: 0 20px;
+
+		img {
+			height: 100%;
+			width: auto;
+		}
 
 		&:hover {
 			filter: grayscale(0);
 		}
-	}
-
-	.slick-slide {
-		background: transparent;
-		margin: 0 20px;
 	}
 }
 
@@ -501,7 +528,20 @@ button {
 	max-width: 450px;
 
 	h2 {
-		margin-bottom: 30px;
+		margin-bottom: 0;
+		padding-bottom: 0;
+		letter-spacing: 0;
+		font-size: 28px;
+
+		.handwritten {
+			font-size: 40px;
+			padding-right: 10px;
+		}
+	}
+
+	p {
+		margin: 0 0 20px;
+		text-align: center;
 	}
 
 	input:not([type="submit"]),
@@ -596,6 +636,18 @@ Blog Listing
 	width: 70%;
 }
 
+.singlePost blockquote {
+	background: transparent;
+	text-align: center;
+	font-style: italic;
+	max-width: 800px;
+	margin: auto;
+
+	p {
+		font-size: 18px;
+	}
+}
+
 .blogPost {
 	color: #333;
 	width: 48%;
@@ -621,14 +673,16 @@ Blog Listing
 	}
 
 	h4 {
-		font-weight: 400;
+		font-weight: 600;
 		margin: 20px 0 10px;
-		font-size: 14px;
+		font-size: 15px;
 		font-family: $fontMain;
+		text-align: left;
 	}
 
 	p {
 		margin: 0;
+		text-align: left;
 	}
 }
 
@@ -683,11 +737,8 @@ Blog Listing
 	transition: all 0.5s ease;
 }
 
-.postDate {
-	margin: 20px 0 10px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 2px;
+p.postDate {
+	margin: 10px 0;
 	font-size: 14px;
 }
 

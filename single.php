@@ -70,7 +70,8 @@
 	    					<span>Read Post</span>
 						</div>
 	    				<h4><?php the_title(); ?></h4>
-						<p class="postDate"><?php the_time('d F, Y'); ?></p>
+						<p><?php the_excerpt(); ?></p>
+						<p class="postDate"><?php the_time('d F Y'); ?> &middot; <span class="postComments"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></span></p>
 					</a>
 
 				<?php

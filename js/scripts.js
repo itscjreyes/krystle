@@ -5,8 +5,6 @@ app.init = function(){
 	app.stickyMenu();
 	app.homeBanner();
 	app.testimonials();
-	app.clientLogos();
-	app.odometer();
 	app.instagram();
 };
 
@@ -17,41 +15,41 @@ app.smoothScroll = function(){
 	  .not('[href="#"]')
 	  .not('[href="#0"]')
 	  .click(function(event) {
-	    // On-page links
-	    if (
-	      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-	      && 
-	      location.hostname == this.hostname
-	    ) {
-	      // Figure out element to scroll to
-	      var target = $(this.hash);
-	      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-	      // Does a scroll target exist?
-	      if (target.length) {
-	        // Only prevent default if animation is actually gonna happen
-	        event.preventDefault();
-	        $('.mobileMenu').removeClass('show');
-	        $('nav').removeClass('show');
-	        $('header').removeClass('show');
-	        $('body').removeClass('menuShow');
-	        var navHeight = $('header').height();
+		// On-page links
+		if (
+		  location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+		  && 
+		  location.hostname == this.hostname
+		) {
+		  // Figure out element to scroll to
+		  var target = $(this.hash);
+		  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+		  // Does a scroll target exist?
+		  if (target.length) {
+			// Only prevent default if animation is actually gonna happen
+			event.preventDefault();
+			$('.mobileMenu').removeClass('show');
+			$('nav').removeClass('show');
+			$('header').removeClass('show');
+			$('body').removeClass('menuShow');
+			var navHeight = $('header').height();
 
-	        $('html, body').animate({
-	          scrollTop: target.offset().top - navHeight
-	        }, 1000, function() {
-	          // Callback after animation
-	          // Must change focus!
-	          var $target = $(target);
-	          $target.focus();
-	          if ($target.is(":focus")) { // Checking if the target was focused
-	            return false;
-	          } else {
-	            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-	            $target.focus(); // Set focus again
-	          };
-	        });
-	      }
-	    }
+			$('html, body').animate({
+			  scrollTop: target.offset().top - navHeight
+			}, 1000, function() {
+			  // Callback after animation
+			  // Must change focus!
+			  var $target = $(target);
+			  $target.focus();
+			  if ($target.is(":focus")) { // Checking if the target was focused
+				return false;
+			  } else {
+				$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+				$target.focus(); // Set focus again
+			  };
+			});
+		  }
+		}
 	  });
 };
 
@@ -113,64 +111,52 @@ app.testimonials = function(){
 };
 
 app.clientLogos = function(){
-	$('.clientLogos').slick({
-		slidesToShow: 6,
-		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 2500,
-		infinite: true,
-		variableWidth: true
-	});
-};
+	$('.clientLogo').clone().insertAfter('.clientLogo:last-child');
 
-app.odometer = function () {
-	if ($('body').hasClass('home')){
-		$.fn.isOnScreen = function () {
-
-			var win = $(window);
-
-			var viewport = {
-				top: win.scrollTop(),
-				left: win.scrollLeft()
-			};
-			viewport.right = viewport.left + win.width();
-			viewport.bottom = viewport.top + win.height();
-
-			var bounds = this.offset();
-			bounds.right = bounds.left + this.outerWidth();
-			bounds.bottom = bounds.top + this.outerHeight();
-
-			return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-		};
-
-		var od1num = $('#od1num').text();
-		var od2num = $('#od2num').text();
-		var od3num = $('#od3num').text();
-		var od4num = $('#od4num').text();
-
-		$('.hiddenNum').css('display', 'none');
-
-		$(window).scroll(function(){
-			if ($('.counter').isOnScreen()) {
-				setTimeout(function () {
-					odometer1.innerHTML = od1num;
-				}, 100);
-
-				setTimeout(function () {
-					odometer2.innerHTML = od2num;
-				}, 500);
-
-				setTimeout(function () {
-					odometer3.innerHTML = od3num;
-				}, 1000);
-
-				setTimeout(function () {
-					odometer4.innerHTML = od4num;
-				}, 1500);
-			} else {}
-		});
+	var totalWidth = 0;
+	for (var i = 0; i < $('.clientLogo').length; i++){
+		totalWidth += $('.clientLogo')[i].offsetWidth;
 	}
-	else {}
+	$('.clientLogos').css('width', totalWidth);
+
+	function marquee(a, b) {
+		var width = b.width();
+		var start_pos = 0;
+		var end_pos = -width;
+
+		function scroll() {
+			if (b.position().left <= -width) {
+				b.css('left', start_pos);
+				scroll();
+			}
+			else {
+				time = (parseInt(b.position().left, 10) - end_pos) *
+					(100000 / (start_pos - end_pos));
+				b.animate({
+					'left': -width
+				}, time, 'linear', function() {
+					scroll();
+				});
+			}
+		}
+
+		b.css({
+			'width': width,
+			'left': start_pos
+		});
+		scroll(a, b);
+		
+		b.mouseenter(function() {
+			b.stop();
+			b.clearQueue();
+		});
+		b.mouseleave(function() {
+			scroll(a, b);
+		});
+		
+	}
+
+	marquee($('.clientLogosContainer'), $('.clientLogos'));
 };
 
 var photoFeed = {};
@@ -205,6 +191,10 @@ app.instagram = function(){
 	// 6706018.5d40f6e.f2b68d78acc74cbfb6c83b90a6596392
 	photoFeed.getPhotos();
 }
+
+$(window).load(function(){
+	app.clientLogos();
+});
 
 $(function(){
 	app.init();

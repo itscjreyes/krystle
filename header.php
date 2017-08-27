@@ -35,11 +35,8 @@
 				<li><a href="<?php echo home_url(); ?>/#blog" class="smooth">Journal</a></li>
 				<li class="has-submenu"><a href="<?php echo home_url(); ?>/#contact" class="smooth">Contact</a>
 					<ul class="subMenu">
-						<li><a href="https://www.facebook.com/itskrystlereyes" target="_blank"><span>Facebook</span><i class="fa fa-facebook"></i></a></li>
 						<li><a href="https://www.instagram.com/krystlereyes_/" target="_blank"><span>Instagram</span><i class="fa fa-instagram"></i></a></li>
-						<li><a href="https://www.linkedin.com/in/krystle-reyes-083a083a" target="_blank"><span>Pinterest</span><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="https://twitter.com/krystlereyes_" target="_blank"><span>Twitter</span><i class="fa fa-twitter"></i></a></li>
-						<li><a href="https://www.pinterest.com/krystlereyes_/boards/" target="_blank"><span>LinkedIn</span><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="https://www.linkedin.com/in/krystle-reyes-083a083a" target="_blank"><span>LinkedIn</span><i class="fa fa-linkedin"></i></a></li>
 					</ul>
 				</li>
 				<li><?php get_search_form(); ?></li>

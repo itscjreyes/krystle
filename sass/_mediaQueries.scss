@@ -33,7 +33,6 @@ Media Queries
 
 		&.show h1 a {
 			color: #333;
-			border: 1px solid #333;
 		}
 
 		nav {
@@ -95,10 +94,6 @@ Media Queries
 	}
 
 	/* ABOUT */
-	.aboutWrapper {
-		flex-direction: column-reverse;
-	}
-
 	.aboutText,
 	.aboutImg {
 		width: 100%;
@@ -167,6 +162,10 @@ Media Queries
 		.container {
 			min-height: 400px;
 		}
+
+		h2 {
+			font-size: 40px;
+		}
 	}
 
 	.slick-arrow {
@@ -202,14 +201,6 @@ Media Queries
 				opacity: 1;
 			}
 		}
-	}
-
-
-	/* CLIENTS */
-
-	.clientLogos img {
-		max-height: 75px;
-		margin: 10px;
 	}
 
 	/* ODOMETER */
