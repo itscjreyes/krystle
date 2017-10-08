@@ -28,9 +28,3 @@
 		<p class="postDate"><?php the_time('d F Y'); ?> &middot; <span class="postComments"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></span></p>
 	</a>
 <?php endwhile; // End the loop. Whew. ?>
-
-<?php // Display navigation to next/previous pages when applicable ?>
-<?php if (  $wp_query->max_num_pages > 1 ) : ?>
-  <p class="alignleft"><?php next_posts_link('&laquo; Older Entries'); ?></p>
-  <p class="alignright"><?php previous_posts_link('Newer Entries &raquo;'); ?></p>
-<?php endif; ?>

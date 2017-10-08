@@ -268,3 +268,41 @@ header.sticky #searchform {
 		color: #333;
 	}
 }
+
+/* Blog Pagination */
+
+.navigation {
+	width: 100%;
+
+	ul {
+		padding: 0;
+
+		/* Next/Previous */
+		> a {
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			margin-right: 5px;
+		}
+
+		a {
+			display: inline-block;
+			color: #333;
+			font-size: 14px;
+			padding: 5px 10px;
+			border: 1px solid #333;
+			opacity: 0.5;
+		}
+
+		li {
+			list-style: none;
+			padding: 0;
+			display: inline-block;
+		}
+
+		li.active a,
+		a:hover,
+		a:focus {
+			opacity: 1;
+		}
+	}
+}

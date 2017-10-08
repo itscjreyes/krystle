@@ -57,6 +57,8 @@
     			}
     		}
     	 ?>
+
+    	 <?php numeric_posts_nav(); ?>
     </div> <!--/.listing -->
 
     <?php get_sidebar(); ?>

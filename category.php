@@ -15,6 +15,7 @@
     			echo '' . $category_description . '';
     	   get_template_part( 'loop', 'category' );
         ?>
+        <?php numeric_posts_nav(); ?>
         </div>
     <?php get_sidebar(); ?>
 
