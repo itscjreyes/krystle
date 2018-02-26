@@ -1,6 +1,6 @@
 <footer>
   <div class="container">
-    <p>&copy; Krystle Reyes <?php echo date('Y'); ?>. All Rights Reserved.</p>
+    <p>&copy; Krystle Reyes 2013-<?php echo date('Y'); ?>. All Rights Reserved.</p>
   </div>
 </footer>
 

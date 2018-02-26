@@ -124,7 +124,7 @@
 	<div class="container">
 		<div class="instagramFeed"></div>
 		<div class="contactForm">
-			<h2><span class="handwritten">Mahalo</span> for stopping by</h2>
+			<h2><span class="handwritten">Thanks</span> for stopping by</h2>
 			<p>If you have any questions, contact me. My door is always open.</p>
 			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 				<?php the_content(); ?>

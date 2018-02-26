@@ -1,36 +1,27 @@
 <?php //index.php is the last resort template, if no other templates match ?>
 <?php get_header(); ?>
 
-<?php if (has_post_thumbnail( $post->ID ) ): ?>
-  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-  <div class="banner blogBanner" style="background-image: url('<?php echo $image[0]; ?>')">
-<?php endif; ?>
-	<div class="container">
-		<span>Latest</span>
-		<?php
-		$args = array(
-			'numberposts' => 1,
-			'offset' => 0,
-			'category' => 0,
-			'orderby' => 'post_date',
-			'order' => 'DESC',
-			'include' => '',
-			'exclude' => '',
-			'meta_key' => '',
-			'meta_value' =>'',
-			'post_type' => 'post',
-			'post_status' => 'publish',
-			'suppress_filters' => true
-		);
+<?php 
 
-		$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
-		foreach( $recent_posts as $recent ){
-				echo '<h2>' . get_the_title($recent["ID"]) . '</h2><a href="' . get_permalink($recent["ID"]) . '">Read More</a>';
-			}
-			wp_reset_query();
-		?>
-	</div>
-</div>
+    $args = array('showposts' => 1);
+
+    $the_query = new WP_Query( $args );
+
+    if( $the_query->have_posts() ): 
+
+        while ( $the_query->have_posts()) : $the_query->the_post();
+
+        	$featuredImage = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
+            echo '<div class="banner blogBanner" style="background-image:url('. $featuredImage .')"><div class="container"><span>Latest</span><h2>'.get_the_title().'</h2><a href="'.get_the_permalink().'">Read More</a></div></div>';
+        endwhile; 
+
+    endif; 
+
+    wp_reset_query(); 
+?>
+
+
 
 <div class="blogListing">
   <div class="container">
