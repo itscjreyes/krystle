@@ -11,8 +11,7 @@ $fontTitle: 'Roboto Condensed', sans-serif;
 $fontMain: 'Open Sans', sans-serif;
 $handwritten: 'Kaushan Script', cursive;
 
-@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Open+Sans|Kaushan+Script);
-@import url(//github.hubspot.com/odometer/themes/odometer-theme-default.css);
+@import url('//fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Open+Sans:400,700|Kaushan+Script');
 @import 'normalize';
 @import 'typography';
 @import 'navigation';

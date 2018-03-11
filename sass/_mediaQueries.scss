@@ -12,7 +12,7 @@ Media Queries
 	}
 } /* End max-width:910px */
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
 	/* NAVIGATION */
 	body.menuShow {
 		overflow: hidden;
@@ -28,7 +28,7 @@ Media Queries
 
 		h1 a {
 			font-size: 14px;
-			padding: 15px;
+			padding: 15px 0;
 		}
 
 		&.show h1 a {
@@ -43,7 +43,7 @@ Media Queries
 			width: 100%;
 			left: 0;
 			top: 0;
-			background: rgba(255,255,255,0.95);
+			background: rgba(255,255,255,0.98);
 			transition: all 0.3s ease;
 
 			&.show {
@@ -66,17 +66,21 @@ Media Queries
 
 				a {
 					color: #333;
-					font-size: 20px;
+					font-size: 18px;
 					letter-spacing: 5px;
 					padding: 10px 0;
 				}
 			}
 		}
 
+		ul.subMenu {
+			margin: 6% 0;
+		}
+
 		&.sticky {
 			h1 a {
 				font-size: 14px;
-				padding: 15px;
+				padding: 15px 0;
 			}
 
 			.mobileMenu {
@@ -97,7 +101,6 @@ Media Queries
 	.aboutText,
 	.aboutImg {
 		width: 100%;
-		text-align: center;
 	}
 
 	.aboutImg {
@@ -164,8 +167,13 @@ Media Queries
 		}
 
 		h2 {
-			font-size: 40px;
+			font-size: 32px;
+			margin-bottom: 5px;
 		}
+	}
+
+	.slide3 {
+		background-position: right;
 	}
 
 	.slick-arrow {
@@ -178,6 +186,11 @@ Media Queries
 
 		.blogPost {
 			width: 100%;
+			margin-bottom: 10%;
+
+			&:last-child {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
@@ -191,6 +204,7 @@ Media Queries
 
 	.blogPost {
 		width: 100%;
+		margin-bottom: 10%;
 
 		.postImgWrapper {
 			&:after {
@@ -221,5 +235,36 @@ Media Queries
 
 	.countText {
 		font-size: 12px;
+	}
+
+	.about h2, .clients h2, .latestPosts h2 {
+		margin-bottom: 10%;
+		font-size: 28px;
+		letter-spacing: 1px;
+	}
+
+	.clientLogosContainer {
+		margin-top: 10%;
+	}
+
+	.contactForm {
+		text-align: left;
+
+		h2 {
+			font-size: 20px;
+			margin-bottom: 2%;
+
+			.handwritten {
+				font-size: 30px;
+			}
+		}
+	}
+
+	.testimonials {
+		.container {
+			img {
+				display: none;
+			}
+		}
 	}
 } /* End max-width:500px */

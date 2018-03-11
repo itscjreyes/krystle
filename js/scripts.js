@@ -106,7 +106,15 @@ app.testimonials = function(){
 	$('.testSlider').slick({
 		dots: true,
 		autoplay: true,
-		autoplaySpeed: 5000
+		autoplaySpeed: 5000,
+		responsive: [
+			{
+			  breakpoint: 767,
+			  settings: {
+				adaptiveHeight: true
+			  }
+			}
+		]
 	});
 };
 
